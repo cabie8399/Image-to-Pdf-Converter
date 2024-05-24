@@ -1,0 +1,40 @@
+{
+    "env": {
+      "browser": true,
+      "es2021": true,
+      "node": true
+    },
+    "extends": [
+      "airbnb-base",
+      "plugin:react/recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "rules": {
+      "indent": "off",
+      "linebreak-style": "off", // 一致的换行符風格
+      "no-useless-constructor": "off",
+      "lines-between-class-members": "off",
+      "camelcase": "off",
+      "no-param-reassign": "off",
+      "no-restricted-syntax": "off",  // 禁止使用特定的语法
+      "class-methods-use-this": "off",
+      "no-undef": "off", // for cornerstone
+      "max-len": "off",
+      "no-underscore-dangle": "off",
+      "no-shadow": "off", // 变量声明覆盖外层作用域的变量
+      "no-plusplus": "off",
+      "max-classes-per-file": "off",
+      "radix": "off",
+      "no-nested-ternary": "off",
+      "import/extensions": "off",
+      "import/no-extraneous-dependencies": "off",
+      "import/no-named-as-default-member": "off",
+      "import/no-cycle": "off",
+      "consistent-return": "off",
+      "no-case-declarations":"off",
+      "no-use-before-define": ["error", { "variables": false }]
+    }
+  }
