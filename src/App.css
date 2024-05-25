@@ -1,0 +1,19 @@
+.container {
+  max-width: 800px;
+  max-height: 600px;
+}
+
+.header {
+  background-color: #191d32;
+  height: 120px;
+}
+
+.content {
+  background-color: #0e1121;
+  height: 350px;
+}
+
+.footer {
+  background-color: #191d32;
+  height: 100px;
+}

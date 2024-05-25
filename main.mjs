@@ -3,8 +3,10 @@ import { app, BrowserWindow } from 'electron';
 
 function createWindow() {
     const mainWindow = new BrowserWindow({
-        width: 1600,
-        height: 1000,
+        width: 800,
+        height: 600,
+        autoHideMenuBar: true,
+        icon: './public/images/pdf.png',
     });
 
     if (isDev) {
