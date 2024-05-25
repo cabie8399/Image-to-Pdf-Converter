@@ -4,7 +4,7 @@ import { app, BrowserWindow } from 'electron';
 function createWindow() {
     const mainWindow = new BrowserWindow({
         width: 800,
-        height: 600,
+        height: 630,
         autoHideMenuBar: true,
         icon: './public/images/pdf.png',
     });

@@ -5,15 +5,82 @@
 
 .header {
   background-color: #191d32;
-  height: 120px;
+  height: 150px;
+  display: flex;
+  /* 水平置中 */
+  justify-content: center;    
+  /* 垂直置中 */
+  align-items: center;        
+}
+
+.title {
+  font-size: 30px;
+  margin-bottom: 10px;
+  font-weight:bold;
+}
+
+.headerText{
+  max-width: 500px;
+  text-align: center;
+
 }
 
 .content {
   background-color: #0e1121;
-  height: 350px;
+  height: 370px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;    
+  align-items: center;
+  justify-content: space-around;
 }
 
-.footer {
+.selectPdfArea {
   background-color: #191d32;
-  height: 100px;
+  width: 300px;
+  height: 180px;
+  margin-top: 10px;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;    
+  align-items: center;
+}
+
+.pdfImg img{
+  height: 40px;
+  width: 40px;
+  opacity: 0.5;
+}
+
+.selectPdfArea span {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.selectPdfText {
+  max-width: 450px;
+  text-align:center;
+}
+
+.clearPdfBtn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;    
+  align-items: center;    
+}
+
+.footerBtn {
+  background-color: #191d32;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+.footerBtn button {
+  margin-right: 30px;
+  margin-bottom: 5px;
 }
