@@ -3,6 +3,10 @@ import embedImages from './utils/imgToPdf';
 import './App.css';
 
 function App() {
+  // eslint-disable-next-line no-unused-vars
+  let fileBytes;
+  // let classText = 'btn btn-primary disabled';
+
   const [fileText, setfileText] = useState('Select your files');
 
   const selectImages = async () => {
@@ -28,20 +32,39 @@ function App() {
           const buffer = await fileData.arrayBuffer();
           dataBuffer.push(buffer);
         }
-        // 读文件数据
-        // const buffer = await fileData.arrayBuffer();
-        // 转成Blod url地址
-        // let src = URL.createObjectURL(new Blob([buffer]));
-        // 在页面中显示
-        // output.insertAdjacentHTML('beforeend', `<img src="${src}">`);
       } catch (e) {
         console.log(e);
+        return e;
       }
       // return dataBuffer;
     }
     await getFile();
-    embedImages(dataBuffer);
+    fileBytes = embedImages(dataBuffer);
+    // convertBtnStatus('enabled');
   };
+
+  const convert = (fileBytes) => {
+    const blob = new Blob([fileBytes], { type: 'application/pdf' });
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    const fileName = 'file.pdf';
+    link.download = fileName;
+    link.click();
+    clearAllFiles();
+  };
+
+  const clearAllFiles = () => {
+    fileBytes = null;
+    setfileText('Select your files');
+    // convertBtnStatus('disabled');
+  };
+
+  // const convertBtnStatus = (status) => {
+  //   if (status === 'enabled') {
+  //     classText = 'btn btn-primary';
+  //   }
+  //   classText = 'btn btn-primary disabled';
+  // };
 
   return (
     <div className="App">
@@ -65,12 +88,12 @@ function App() {
             Only JPG and PNG are supported.
           </div>
           <div className="clearPdfBtn">
-            <button type="button" className="btn btn-danger">Clear All</button>
+            <button type="button" className="btn btn-danger" onClick={clearAllFiles}>Clear All</button>
           </div>
         </div>
         <div className="row footer">
           <div className="footerBtn">
-            <button type="button" className="btn btn-primary">Convert</button>
+            <button type="button" className='btn btn-primary' onClick={convert}>Convert</button>
           </div>
         </div>
       </div>

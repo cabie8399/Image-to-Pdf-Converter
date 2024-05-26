@@ -15,12 +15,6 @@ async function embedImages(dataBuffer) {
     });
   }
   const pdfBytes = await pdfDoc.save();
-  const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-  const link = document.createElement('a');
-  link.href = window.URL.createObjectURL(blob);
-  const fileName = 'file.pdf';
-  link.download = fileName;
-  link.click();
   return pdfBytes;
 }
 
