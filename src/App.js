@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import embedImages from './utils/imgToPdf';
 import './App.css';
 
 function App() {
-  // eslint-disable-next-line no-unused-vars
-  let fileBytes;
-  // let classText = 'btn btn-primary disabled';
+  const fileBytes = useRef(null);
 
   const [fileText, setfileText] = useState('Select your files');
   const [isButtonDisabled, setButtonDisabled] = useState(true);
@@ -34,17 +32,16 @@ function App() {
           dataBuffer.push(buffer);
         }
       } catch (e) {
-        console.log(e);
         return e;
       }
     }
     await getFile();
-    fileBytes = embedImages(dataBuffer);
+    fileBytes.current = await embedImages(dataBuffer);
     convertBtnStatus(false);
   };
 
-  const convert = (fileBytes) => {
-    const blob = new Blob([fileBytes], { type: 'application/pdf' });
+  const convert = () => {
+    const blob = new Blob([fileBytes.current], { type: 'application/pdf' });
     const link = document.createElement('a');
     link.href = window.URL.createObjectURL(blob);
     const fileName = 'file.pdf';
@@ -54,7 +51,7 @@ function App() {
   };
 
   const clearAllFiles = () => {
-    fileBytes = null;
+    fileBytes.current = null;
     setfileText('Select your files');
     convertBtnStatus(true);
   };
