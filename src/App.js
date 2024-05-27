@@ -8,6 +8,7 @@ function App() {
   // let classText = 'btn btn-primary disabled';
 
   const [fileText, setfileText] = useState('Select your files');
+  const [isButtonDisabled, setButtonDisabled] = useState(true);
 
   const selectImages = async () => {
     const dataBuffer = [];
@@ -36,11 +37,10 @@ function App() {
         console.log(e);
         return e;
       }
-      // return dataBuffer;
     }
     await getFile();
     fileBytes = embedImages(dataBuffer);
-    // convertBtnStatus('enabled');
+    convertBtnStatus(false);
   };
 
   const convert = (fileBytes) => {
@@ -56,15 +56,12 @@ function App() {
   const clearAllFiles = () => {
     fileBytes = null;
     setfileText('Select your files');
-    // convertBtnStatus('disabled');
+    convertBtnStatus(true);
   };
 
-  // const convertBtnStatus = (status) => {
-  //   if (status === 'enabled') {
-  //     classText = 'btn btn-primary';
-  //   }
-  //   classText = 'btn btn-primary disabled';
-  // };
+  const convertBtnStatus = (status) => {
+    setButtonDisabled(status);
+  };
 
   return (
     <div className="App">
@@ -93,7 +90,7 @@ function App() {
         </div>
         <div className="row footer">
           <div className="footerBtn">
-            <button type="button" className='btn btn-primary' onClick={convert}>Convert</button>
+            <button type="button" className='btn btn-primary' disabled={isButtonDisabled} onClick={convert}>Convert</button>
           </div>
         </div>
       </div>

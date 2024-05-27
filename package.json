@@ -1,5 +1,6 @@
 {
   "name": "image-to-pdf",
+  "produceName": "Image To PDF Converter",
   "version": "0.0.1",
   "private": true,
   "main": "./main.mjs",
@@ -13,7 +14,7 @@
     "@testing-library/user-event": "^13.5.0",
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
-    "electron": "^30.0.6",
+    "electron": "^30.0.8",
     "electron-is-dev": "^3.0.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "npm": "^10.8.0",
